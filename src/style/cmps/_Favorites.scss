@@ -1,4 +1,15 @@
 .favorites-container {
+    background-color: $clr3;
+    box-shadow: 0px 0px 25px -1px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 30px;
+    transition: 0.3s;
+
+    &.dark {
+        background-color: $clr1;
+        color: $clr7;
+    }
+
     .title {
         font-family: openSansBold;
         border-bottom: 1px solid darken($clr3, 7);
@@ -20,6 +31,7 @@
             width: 150px;
             padding: 10px;
             cursor: pointer;
+            transition: 0.3s;
 
             .name {
                 font-family: openSansBold;
@@ -28,6 +40,27 @@
             .temperature {
                 margin-bottom: 20px;
             }
+
+            &.dark {
+                border: 1px solid darken($clr1, 7);
+                &:hover {
+                    background-color: darken($clr1, 10);
+                    border: 1px solid darken($clr1, 15);
+                }
+            }
+
+            &:hover {
+                background-color: darken($clr3, 10);
+                border: 1px solid darken($clr3, 15);
+            }
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    .favorites-container {
+        .favorites-list {
+            justify-content: center;
         }
     }
 }

@@ -4,9 +4,11 @@ import weatherService from "../services/weatherService";
 import { setSearchTerm } from "../store/actions/weatherActions";
 import { SearchResultsList } from "./SearchResultsList";
 import { UserMsg } from "./general/UserMsg";
+import { useDarkMode } from "../hooks/useDarkMode";
 
 export const Search = () => {
   const dispatch = useDispatch();
+  const { isDarkMode } = useDarkMode();
   const debounceTimeout = useRef();
   const searchTerm = useSelector((state) => state.weather.searchTerm);
   const [searchResults, setSearchResults] = useState(null);
@@ -35,27 +37,27 @@ export const Search = () => {
 
   return (
     <>
-    {userMsg&& <UserMsg msg={userMsg} />}
-    <div className="container">
-      <form className="search-form">
-        <input
-          type="text"
-          placeholder="Search a location..."
-          value={searchTerm}
-          className="input"
-          onChange={function (ev) {
-            const value = ev.target.value;
-            return debounce(value, () => handleChange(value), 500)();
-          }}
-        />
-      </form>
-      {searchResults?.length > 0 && (
-        <SearchResultsList
-          data={searchResults}
-          clearSearchResults={() => setSearchResults(null)}
-        />
-      )}
-    </div>
+      {userMsg && <UserMsg msg={userMsg} />}
+      <div className="container">
+        <form className={`search-form ${isDarkMode ? "dark" : ""}`}>
+          <input
+            type="text"
+            placeholder="Search a location..."
+            value={searchTerm}
+            className="input"
+            onChange={function (ev) {
+              const value = ev.target.value;
+              return debounce(value, () => handleChange(value), 500)();
+            }}
+          />
+        </form>
+        {searchResults?.length > 0 && (
+          <SearchResultsList
+            data={searchResults}
+            clearSearchResults={() => setSearchResults(null)}
+          />
+        )}
+      </div>
     </>
   );
 };

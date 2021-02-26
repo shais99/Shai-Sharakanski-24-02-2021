@@ -11,6 +11,8 @@ const initialState = {
   msg: "",
   locationKey: "215854",
   locationName: "Tel Aviv",
+  isDarkMode: false,
+  isDarkModeSoundPlayed: false,
 };
 
 export default function f(state = initialState, action = {}) {
@@ -55,6 +57,16 @@ export default function f(state = initialState, action = {}) {
       return {
         ...state,
         favorites: favoritesCopy,
+      };
+    case "TOGGLE_DARK_MODE":
+      return {
+        ...state,
+        isDarkMode: !state.isDarkMode,
+      };
+    case "SET_DARK_MODE_SOUND_PLAYED":
+      return {
+        ...state,
+        isDarkModeSoundPlayed: true,
       };
     default:
       return state;

@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { useDarkMode } from "../hooks/useDarkMode";
 import {
   setLocationKey,
   setLocationName,
@@ -10,6 +11,7 @@ import {
 export const FavoritesList = ({ favorites }) => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const { isDarkMode } = useDarkMode();
 
   function onClickLocation(location) {
     dispatch(setSearchTerm(location.name));
@@ -24,7 +26,9 @@ export const FavoritesList = ({ favorites }) => {
       {favorites.map((f) => {
         return (
           <div
-            className="location flex column align-center"
+            className={`location flex column align-center ${
+              isDarkMode ? "dark" : ""
+            }`}
             onClick={() => onClickLocation(f)}
             key={f.key}
           >

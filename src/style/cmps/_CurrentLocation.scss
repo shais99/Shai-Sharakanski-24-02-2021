@@ -3,11 +3,37 @@
     border-radius: 5px;
     padding: 30px;
     margin-top: 20px;
+    box-shadow: 0px 0px 25px -1px rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+
+    &.dark {
+        background-color: $clr1;
+        color: $clr7;
+
+        .btn {
+            color: $clr7;
+        }
+    }
 
     header {
-        .location-name {
-            font-family: openSansBold;
-            font-size: rem(20px);
+        justify-content: space-between;
+
+        .name-temperature {
+            margin-right: 15px;
+
+            .location-name {
+                font-family: openSansBold;
+                font-size: rem(20px);
+            }
+        }
+
+        .btn {
+            width: 260px;
+            
+            img {
+                width: 20px;
+                margin-right: 5px;
+            }
         }
     }
 
@@ -26,10 +52,33 @@
             padding: 20px 50px;
             text-align: center;
             border-radius: 5px;
-            transition: .3s;
+            transition: 0.3s;
+
+            &.dark {
+                background-color: darken($clr1, 5);
+                color: $clr7;
+                
+                &:hover {
+                    background-color: darken($clr1, 10);
+                }
+            }
 
             &:hover {
                 background-color: darken($clr3, 10);
+            }
+        }
+    }
+}
+
+@media (max-width: 390px) {
+    .current-location-container {
+        header {
+            flex-wrap: wrap;
+            justify-content: center;
+
+            .name-temperature {
+                text-align: center;
+                margin-bottom: 10px;
             }
         }
     }

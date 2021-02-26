@@ -18,7 +18,8 @@ const httpService = {
 export default httpService;
 
 async function ajax(endpoint, method = "get", data = {}, parameters = "") {
-  const API_KEY = "dtRV8fgpyz1IuzbANHjS0LnXUIpFvC15";
+  // const API_KEY = "dtRV8fgpyz1IuzbANHjS0LnXUIpFvC15";
+  const API_KEY = "ztoG057zrGQbIReUPJMcURHmT1ukYv22";
 
   try {
     const res = await axios({

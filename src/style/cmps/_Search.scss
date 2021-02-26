@@ -1,19 +1,51 @@
 .search-results-container {
-    max-height: 200px;
+    max-height: 180px;
     overflow-y: auto;
     position: absolute;
     width: 100%;
     max-width: $containerWidth;
+    box-shadow: 0px 0px 25px -1px rgba(0, 0, 0, 0.3);
+
+    &.dark {
+        .result {
+            color: $clr7;
+
+            &:nth-of-type(odd) {
+                background-color: darken($clr1, 10);
+            }
+            &:nth-of-type(even) {
+                background-color: $clr1;
+            }
+        }
+    }
 
     .result {
         padding: 7px;
         cursor: pointer;
+        transition: 0.3s;
 
         &:nth-of-type(odd) {
             background-color: darken($clr3, 10);
         }
         &:nth-of-type(even) {
             background-color: $clr3;
+        }
+    }
+}
+
+.search-form {
+    box-shadow: 0px 0px 25px -1px rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+
+    .input {
+        border: none;
+        transition: 0.3s;
+    }
+
+    &.dark {
+        .input {
+            background-color: $clr1;
+            color: $clr7;
         }
     }
 }

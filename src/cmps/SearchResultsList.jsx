@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useDarkMode } from "../hooks/useDarkMode";
 import {
   setLocationKey,
   setLocationName,
@@ -8,6 +9,7 @@ import {
 
 export const SearchResultsList = ({ data, clearSearchResults }) => {
   const dispatch = useDispatch();
+  const { isDarkMode } = useDarkMode();
 
   function onClickSearchResult(location) {
     dispatch(setLocationName(location.LocalizedName));
@@ -17,7 +19,7 @@ export const SearchResultsList = ({ data, clearSearchResults }) => {
   }
 
   return (
-    <div className="search-results-container">
+    <div className={`search-results-container ${isDarkMode ? "dark" : ""}`}>
       {data.map((sr, idx) => {
         return (
           <div

@@ -8,6 +8,17 @@ body {
     color: $clr1;
 }
 
+.app-container {
+    background-image: url("../img/wallpaper.jpg");
+    // background-position: 30% 20%;
+    height: 100vh;
+    background-size: cover;
+
+    &.dark {
+        background-image: url("../img/wallpaper-dark.jpg");
+    }
+}
+
 a {
     cursor: pointer;
 }
@@ -86,8 +97,4 @@ p {
 
 ::-webkit-scrollbar-thumb:horizontal:active {
     -webkit-border-radius: 100px;
-}
-
-input:disabled {
-    cursor: not-allowed;
 }

@@ -27,3 +27,15 @@ export function favoritesToggle(location) {
     dispatch({ type: "FAVORITES_TOGGLE", location });
   };
 }
+
+export function darkModeToggle(isDarkModeSoundPlayed) {
+  return (dispatch) => {
+    dispatch({ type: "TOGGLE_DARK_MODE", isDarkModeSoundPlayed });
+  };
+}
+
+export function setDarkModeSoundPlayed() {
+  return (dispatch) => {
+    dispatch({ type: "SET_DARK_MODE_SOUND_PLAYED" });
+  };
+}
