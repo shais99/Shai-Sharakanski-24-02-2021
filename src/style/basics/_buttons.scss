@@ -1,0 +1,55 @@
+.btn {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: 0.3s;
+    font-family: openSansBold;
+    text-align: center;
+
+    &.small {
+        padding: 5px 10px;
+        font-size: rem(13px);
+    }
+
+    &.primary {
+        background-color: $clr2;
+        color: $clr7;
+        &:hover {
+            background-color: darken($clr2, 5%);
+        }
+    }
+
+    &.success {
+        background-color: darken($clr5, 15%);
+        color: $clr7;
+        &:hover {
+            background-color: darken($clr5, 22.5%);
+        }
+    }
+
+    &.danger {
+        background-color: $clr4;
+        color: $clr7;
+        &:hover {
+            background-color: darken($clr4, 10%);
+        }
+    }
+
+    &.warning {
+        background-color: darken($clr3, 12%);
+        color: $clr7;
+        &:hover {
+            background-color: darken($clr3, 15%);
+        }
+    }
+
+    &.disabled {
+        background-color: darken($clr6, 8);
+        color: darken($clr6, 50);
+        cursor: default;
+
+        &:hover {
+            background-color: darken($clr6, 8);
+        }
+    }
+}

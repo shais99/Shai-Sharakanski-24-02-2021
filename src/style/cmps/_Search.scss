@@ -1,0 +1,19 @@
+.search-results-container {
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    width: 100%;
+    max-width: $containerWidth;
+
+    .result {
+        padding: 7px;
+        cursor: pointer;
+
+        &:nth-of-type(odd) {
+            background-color: darken($clr3, 10);
+        }
+        &:nth-of-type(even) {
+            background-color: $clr3;
+        }
+    }
+}

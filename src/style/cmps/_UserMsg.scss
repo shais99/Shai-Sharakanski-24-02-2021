@@ -1,0 +1,11 @@
+.user-msg {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    background-color: $clr2;
+    z-index: 997;
+    font-family: openSansBold;
+    padding: 10px 20px;
+    color: $clr7;
+    border-radius: 5px;
+}

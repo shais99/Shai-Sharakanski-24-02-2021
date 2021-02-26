@@ -1,0 +1,29 @@
+.main-nav-container {
+    background-color: $clr3;
+    padding: 8px;
+    margin-bottom: 20px;
+
+    .logo-container {
+        img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        h1 {
+            font-family: openSansBold;
+            font-size: rem(22px);
+        }
+    }
+
+    .main-nav {
+        li {
+            margin-left: 20px;
+            padding: 10px 0;
+
+            a:hover,
+            .active {
+                color: $clr2;
+            }
+        }
+    }
+}

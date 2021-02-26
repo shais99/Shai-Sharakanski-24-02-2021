@@ -1,0 +1,33 @@
+.favorites-container {
+    .title {
+        font-family: openSansBold;
+        border-bottom: 1px solid darken($clr3, 7);
+        padding-bottom: 5px;
+        margin-bottom: 20px;
+
+        img {
+            width: 20px;
+            margin-right: 10px;
+        }
+    }
+
+    .favorites-list {
+        gap: 25px;
+
+        .location {
+            border-radius: 5px;
+            border: 1px solid darken($clr3, 7);
+            width: 150px;
+            padding: 10px;
+            cursor: pointer;
+
+            .name {
+                font-family: openSansBold;
+            }
+
+            .temperature {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}

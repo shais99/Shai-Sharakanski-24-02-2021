@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: openSans, Arial, serif;
+    color: $clr1;
+}
+
+a {
+    cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-weight: normal;
+}
+
+img {
+    width: 100%;
+    object-fit: cover;
+}
+
+button {
+    cursor: pointer;
+}
+
+textarea,
+input,
+button {
+    font-family: openSans, Arial, sans-serif;
+    outline: none;
+    font-size: rem(16px);
+}
+
+p {
+    margin: 0;
+}
+
+.input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    border: 1px solid darken($clr6, 8);
+}
+
+.textarea {
+    width: 100%;
+    resize: none;
+    border: 1px solid darken($clr6, 8);
+    padding: 8px;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: rgba(0, 0, 0, 0.09);
+    -webkit-border-radius: 100px;
+}
+
+::-webkit-scrollbar:hover {
+    background-color: rgba(0, 0, 0, 0.09);
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:vertical:active {
+    -webkit-border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:horizontal:active {
+    -webkit-border-radius: 100px;
+}
+
+input:disabled {
+    cursor: not-allowed;
+}
