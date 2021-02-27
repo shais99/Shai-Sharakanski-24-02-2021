@@ -29,7 +29,7 @@
 
         .btn {
             width: 260px;
-            
+
             img {
                 width: 20px;
                 margin-right: 5px;
@@ -41,11 +41,14 @@
         font-family: openSansBold;
         font-size: rem(40px);
         margin: 65px 0;
+        text-align: center;
     }
 
     footer {
-        gap: 30px;
         margin-bottom: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        grid-gap: 30px;
 
         .forecast {
             background-color: darken($clr3, 5);
@@ -57,7 +60,7 @@
             &.dark {
                 background-color: darken($clr1, 5);
                 color: $clr7;
-                
+
                 &:hover {
                     background-color: darken($clr1, 10);
                 }

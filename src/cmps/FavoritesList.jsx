@@ -26,9 +26,7 @@ export const FavoritesList = ({ favorites }) => {
       {favorites.map((f) => {
         return (
           <div
-            className={`location flex column align-center ${
-              isDarkMode ? "dark" : ""
-            }`}
+            className={`location ${isDarkMode ? "dark" : ""}`}
             onClick={() => onClickLocation(f)}
             key={f.key}
           >

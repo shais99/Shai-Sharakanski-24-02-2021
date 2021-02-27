@@ -6,7 +6,7 @@ import { useDarkMode } from "../hooks/useDarkMode";
 export const FiveDailyForecastsList = ({ data }) => {
   const { isDarkMode } = useDarkMode();
   return (
-    <footer className="flex justify-center wrap">
+    <footer className="">
       {data.map((fc, idx) => {
         return (
           <div

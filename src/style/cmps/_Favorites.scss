@@ -23,12 +23,13 @@
     }
 
     .favorites-list {
-        gap: 25px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-gap: 20px;
 
         .location {
             border-radius: 5px;
             border: 1px solid darken($clr3, 7);
-            width: 150px;
             padding: 10px;
             cursor: pointer;
             transition: 0.3s;
