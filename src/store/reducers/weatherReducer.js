@@ -7,10 +7,10 @@ if (localStorage[FAVORITES_STORAGE_KEY])
 
 const initialState = {
   favorites,
-  searchTerm: "Tel Aviv",
+  searchTerm: "",
   msg: "",
-  locationKey: "215854",
-  locationName: "Tel Aviv",
+  locationKey: "",
+  locationName: "",
   isDarkMode: false,
   isDarkModeSoundPlayed: false,
 };

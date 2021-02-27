@@ -8,7 +8,7 @@
 
     &.dark {
         .result {
-            color: $clr7;
+            color: $clr5;
 
             &:nth-of-type(odd) {
                 background-color: darken($clr1, 10);
@@ -45,7 +45,7 @@
     &.dark {
         .input {
             background-color: $clr1;
-            color: $clr7;
+            color: $clr5;
         }
     }
 }

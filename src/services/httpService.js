@@ -18,12 +18,12 @@ const httpService = {
 export default httpService;
 
 async function ajax(endpoint, method = "get", data = {}, parameters = "") {
-  // const API_KEY = "dtRV8fgpyz1IuzbANHjS0LnXUIpFvC15";
-  const API_KEY = "ztoG057zrGQbIReUPJMcURHmT1ukYv22";
+  const API_KEY = "dtRV8fgpyz1IuzbANHjS0LnXUIpFvC15";
+  // const API_KEY = "ztoG057zrGQbIReUPJMcURHmT1ukYv22";
 
   try {
     const res = await axios({
-      url: `${endpoint}?apikey=${API_KEY}${parameters}`,
+      url: `https://cors-anywhere.herokuapp.com/${endpoint}?apikey=${API_KEY}${parameters}`,
       method,
       data: data,
       headers: {

@@ -1,32 +1,43 @@
 import { FAVORITES_STORAGE_KEY } from "../data/constants";
 import httpService from "./httpService";
 
+const BASE_URL = "http://dataservice.accuweather.com";
+
 const weatherService = {
   getBySearchTerm,
   getCurrentWeather,
   getFiveDailyForecasts,
   favoritesSaveToStorage,
+  getLocationByCoordinates,
 };
 
 export default weatherService;
 
 async function getCurrentWeather(locationKey) {
   return await httpService.get(
-    `http://dataservice.accuweather.com/currentconditions/v1/${locationKey}`
+    `${BASE_URL}/currentconditions/v1/${locationKey}`
   );
 }
 
 async function getFiveDailyForecasts(locationKey) {
   return await httpService.get(
-    `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}`
+    `${BASE_URL}/forecasts/v1/daily/5day/${locationKey}`
   );
 }
 
 async function getBySearchTerm(searchTerm) {
   return await httpService.get(
-    `http://dataservice.accuweather.com/locations/v1/cities/autocomplete`,
+    `${BASE_URL}/locations/v1/cities/autocomplete`,
     null,
     `&q=${searchTerm}`
+  );
+}
+
+async function getLocationByCoordinates(coordinates) {
+  return await httpService.get(
+    `${BASE_URL}/locations/v1/cities/geoposition/search`,
+    null,
+    `&q=${coordinates.lat},${coordinates.lng}`
   );
 }
 

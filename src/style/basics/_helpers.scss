@@ -62,22 +62,6 @@
 
 /* Utils */
 
-.msg-container {
-    padding: 10px;
-    background-color: $clr4;
-    color: $clr7;
-    font-family: openSansBold;
-    margin-bottom: 20px;
-
-    &.success {
-        background-color: darken($clr5, 15);
-    }
-
-    &.warning {
-        background-color: darken($clr3, 12);
-    }
-}
-
 .screen {
     background-color: rgba(0, 0, 0, 0.4);
     width: 100%;

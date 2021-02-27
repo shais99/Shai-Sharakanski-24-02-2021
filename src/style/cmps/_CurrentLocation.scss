@@ -8,10 +8,10 @@
 
     &.dark {
         background-color: $clr1;
-        color: $clr7;
+        color: $clr5;
 
         .btn {
-            color: $clr7;
+            color: $clr5;
         }
     }
 
@@ -59,7 +59,7 @@
 
             &.dark {
                 background-color: darken($clr1, 5);
-                color: $clr7;
+                color: $clr5;
 
                 &:hover {
                     background-color: darken($clr1, 10);
