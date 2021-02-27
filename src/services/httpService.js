@@ -23,7 +23,7 @@ async function ajax(endpoint, method = "get", data = {}, parameters = "") {
 
   try {
     const res = await axios({
-      url: `https://cors-anywhere.herokuapp.com/${endpoint}?apikey=${API_KEY}${parameters}`,
+      url: `${endpoint}?apikey=${API_KEY}${parameters}`,
       method,
       data: data,
       headers: {
