@@ -1,4 +1,4 @@
-import { FAVORITES_STORAGE_KEY } from "../data/constants";
+import { DARKMODE_STORAGE_KEY, FAVORITES_STORAGE_KEY } from "../data/constants";
 import httpService from "./httpService";
 
 const BASE_URL = "http://dataservice.accuweather.com";
@@ -9,6 +9,7 @@ const weatherService = {
   getFiveDailyForecasts,
   favoritesSaveToStorage,
   getLocationByCoordinates,
+  darkModeSaveToStorage,
 };
 
 export default weatherService;
@@ -43,4 +44,8 @@ async function getLocationByCoordinates(coordinates) {
 
 function favoritesSaveToStorage(favorites) {
   localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(favorites));
+}
+
+function darkModeSaveToStorage(isDarkMode) {
+  localStorage.setItem(DARKMODE_STORAGE_KEY, isDarkMode);
 }

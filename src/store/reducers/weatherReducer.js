@@ -1,9 +1,16 @@
-import { FAVORITES_STORAGE_KEY } from "../../data/constants";
+import {
+  DARKMODE_STORAGE_KEY,
+  FAVORITES_STORAGE_KEY,
+} from "../../data/constants";
 import weatherService from "../../services/weatherService";
 
 let favorites = [];
 if (localStorage[FAVORITES_STORAGE_KEY])
   favorites = JSON.parse(localStorage[FAVORITES_STORAGE_KEY]);
+
+let isDarkMode = false;
+if (localStorage[DARKMODE_STORAGE_KEY])
+  isDarkMode = JSON.parse(localStorage[DARKMODE_STORAGE_KEY]);
 
 const initialState = {
   favorites,
@@ -11,7 +18,7 @@ const initialState = {
   msg: "",
   locationKey: "",
   locationName: "",
-  isDarkMode: false,
+  isDarkMode,
   isDarkModeSoundPlayed: false,
 };
 

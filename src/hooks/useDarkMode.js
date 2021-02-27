@@ -4,6 +4,7 @@ import {
   setDarkModeSoundPlayed,
 } from "../store/actions/weatherActions";
 import lightningMP3 from "../sound/lightning.mp3";
+import weatherService from "../services/weatherService";
 import { useEffect } from "react";
 
 export function useDarkMode() {
@@ -16,12 +17,17 @@ export function useDarkMode() {
   useEffect(() => {
     if (isDarkMode && !isDarkModeSoundPlayed) {
       const lightningSound = new Audio(lightningMP3);
-      lightningSound.play();
-      dispatch(setDarkModeSoundPlayed());
+      lightningSound
+        .play()
+        .then(() => {
+          dispatch(setDarkModeSoundPlayed());
+        })
+        .catch(() => {});
     }
   }, [isDarkMode, isDarkModeSoundPlayed, dispatch]);
 
   function toggleDarkMode() {
+    weatherService.darkModeSaveToStorage(!isDarkMode);
     dispatch(darkModeToggle());
   }
 
