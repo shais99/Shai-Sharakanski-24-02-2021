@@ -1,7 +1,7 @@
 import { PREFERENCES_KEY, FAVORITES_STORAGE_KEY } from "../data/constants";
 import httpService from "./httpService";
 
-const BASE_URL = "http://dataservice.accuweather.com";
+const BASE_URL = "https://dataservice.accuweather.com";
 
 const weatherService = {
   getBySearchTerm,
