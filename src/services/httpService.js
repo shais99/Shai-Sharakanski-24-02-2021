@@ -9,7 +9,7 @@ const httpService = {
 export default httpService;
 
 async function ajax(endpoint, axiosFn, parameters = "") {
-  const API_KEY = "ztoG057zrGQbIReUPJMcURHmT1ukYv22";
+  const API_KEY = "dtRV8fgpyz1IuzbANHjS0LnXUIpFvC15";
 
   try {
     const res = await axiosFn(`${endpoint}?apikey=${API_KEY}${parameters}`, {

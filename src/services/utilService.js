@@ -1,7 +1,7 @@
 export function convertFahrenheitToCelsius(f) {
-  return +(((f - 32) * 5) / 9).toFixed(1);
+  return +(((f - 32) * 5) / 9);
 }
 
 export function convertCelsiusToFahrenheit(c) {
-  return +((c * 9) / 5 + 32).toFixed(1);
+  return +((c * 9) / 5 + 32);
 }

@@ -1,16 +1,14 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useDarkMode } from "../hooks/useDarkMode";
-import { useTemperature } from "../hooks/useTemperature";
-import { convertCelsiusToFahrenheit } from "../services/utilService";
 import { favoritesToggle } from "../store/actions/weatherActions";
 import { FiveDailyForecastsList } from "./FiveDailyForecastsList";
+import { Temperature } from "./Temperature";
 
 export const CurrentLocation = ({ currentWeather, fiveDailyForecasts }) => {
   const locationName = useSelector((state) => state.weather.locationName);
   const locationKey = useSelector((state) => state.weather.locationKey);
   const favorites = useSelector((state) => state.weather.favorites);
-  const { isCelsius } = useTemperature();
   const { isDarkMode } = useDarkMode();
   const dispatch = useDispatch();
 
@@ -36,12 +34,10 @@ export const CurrentLocation = ({ currentWeather, fiveDailyForecasts }) => {
       <header className="flex align-center">
         <div className="name-temperature flex column">
           <span className="location-name">{locationName}</span>
-          <span>
-            {isCelsius
-              ? celsiusTemperature
-              : convertCelsiusToFahrenheit(celsiusTemperature)}{" "}
-            <sup>°{isCelsius ? "C" : "F"}</sup>
-          </span>
+          <Temperature
+            isTemperatureInCelsius={true}
+            temperature={celsiusTemperature}
+          />
         </div>
         <div>
           <button

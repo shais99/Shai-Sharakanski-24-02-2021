@@ -7,9 +7,13 @@ export const Preferences = () => {
   const { toggleDarkMode, isDarkMode } = useDarkMode();
   const { toggleCelsius, isCelsius } = useTemperature();
 
+  // function handleTemperatureChange() {
+  //   toggleCelsius()
+  // }
+
   return (
     <section
-      className={`preferences-container container flex ${
+      className={`preferences-container container flex align-center ${
         isDarkMode ? "dark" : ""
       }`}
     >
@@ -20,11 +24,26 @@ export const Preferences = () => {
           handleChange={toggleDarkMode}
           title="Dark mode"
         />
-        <Toggler
-          isChecked={isCelsius}
-          handleChange={toggleCelsius}
-          title="Celsius / Fahrenheit"
-        />
+        <div className="temperature">
+          <label>
+            <input
+              type="radio"
+              name="temperatureFormat"
+              checked={isCelsius}
+              onChange={toggleCelsius}
+            />
+            <span>Celsius</span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="temperatureFormat"
+              checked={!isCelsius}
+              onChange={toggleCelsius}
+            />
+            <span>Fahrenheit</span>
+          </label>
+        </div>
       </div>
     </section>
   );

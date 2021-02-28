@@ -27,7 +27,7 @@ export const SearchResultsList = ({ data, clearSearchResults }) => {
             className="result"
             onClick={() => onClickSearchResult(sr)}
           >
-            {sr.LocalizedName}
+            {sr.LocalizedName}, {sr.Country?.LocalizedName}
           </div>
         );
       })}

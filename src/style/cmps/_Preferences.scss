@@ -17,11 +17,7 @@
 
     .mode-toggle {
         &:first-of-type {
-            width: 150px;
-        }
-
-        &:last-of-type {
-            width: 210px;
+            margin-right: 120px;
         }
     }
 
@@ -35,7 +31,7 @@
             position: absolute;
             left: 55px;
             top: 4px;
-            width: 160px;
+            width: 85px;
         }
 
         input {
