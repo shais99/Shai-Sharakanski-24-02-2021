@@ -9,12 +9,14 @@ import {
   setLocationName,
   setSearchTerm,
 } from "../store/actions/weatherActions";
+import { UserMsg } from "../cmps/general/UserMsg";
 
 export const Home = () => {
   const dispatch = useDispatch();
   const locationKey = useSelector((state) => state.weather.locationKey);
   const [currentWeather, setCurrentWeather] = useState(null);
   const [fiveDailyForecasts, setFiveDailyForecasts] = useState(null);
+  const [userMsg, setUserMsg] = useState("");
 
   useEffect(() => {
     if (!locationKey) {
@@ -37,12 +39,16 @@ export const Home = () => {
         });
 
         if (coordinates.lat && coordinates.lng) {
-          const location = await weatherService.getLocationByCoordinates(
-            coordinates
-          );
-          locationKey = location.Key;
-          locationName = location.EnglishName;
-          searchTerm = location.EnglishName;
+          try {
+            const location = await weatherService.getLocationByCoordinates(
+              coordinates
+            );
+            locationKey = location.Key;
+            locationName = location.EnglishName;
+            searchTerm = location.EnglishName;
+          } catch (_) {
+            setUserMsg("Network error, please try again later.");
+          }
         }
         dispatch(setLocationKey(locationKey));
         dispatch(setLocationName(locationName));
@@ -53,21 +59,36 @@ export const Home = () => {
       loadFiveDailyForecasts();
 
       async function loadCurrentWeather() {
-        const loadedCurrentWeather = await weatherService.getCurrentWeather(
-          locationKey
-        );
-        setCurrentWeather(loadedCurrentWeather[0]);
+        try {
+          const loadedCurrentWeather = await weatherService.getCurrentWeather(
+            locationKey
+          );
+          setCurrentWeather(loadedCurrentWeather[0]);
+        } catch (_) {
+          setUserMsg("Network error, please try again later.");
+        }
       }
       async function loadFiveDailyForecasts() {
-        const loadedFiveDailyForecasts = await weatherService.getFiveDailyForecasts(
-          locationKey
-        );
-        setFiveDailyForecasts(loadedFiveDailyForecasts.DailyForecasts);
+        try {
+          const loadedFiveDailyForecasts = await weatherService.getFiveDailyForecasts(
+            locationKey
+          );
+          setFiveDailyForecasts(loadedFiveDailyForecasts.DailyForecasts);
+        } catch (_) {
+          setUserMsg("Network error, please try again later.");
+        }
       }
     }
   }, [locationKey, dispatch]);
 
-  if (!currentWeather || !fiveDailyForecasts) return <Loader />;
+  if (!currentWeather || !fiveDailyForecasts) {
+    return (
+      <>
+        {userMsg && <UserMsg msg={userMsg} />}
+        <Loader />
+      </>
+    );
+  }
   return (
     <section className="home-container">
       <Search />
