@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
-  darkModeToggle,
+  setPreferences,
   setDarkModeSoundPlayed,
 } from "../store/actions/weatherActions";
 import lightningMP3 from "../sound/lightning.mp3";
@@ -9,13 +9,13 @@ import { useEffect } from "react";
 
 export function useDarkMode() {
   const dispatch = useDispatch();
-  const isDarkMode = useSelector((state) => state.weather.isDarkMode);
+  const preferences = useSelector((state) => state.weather.preferences);
   const isDarkModeSoundPlayed = useSelector(
     (state) => state.weather.isDarkModeSoundPlayed
   );
 
   useEffect(() => {
-    if (isDarkMode && !isDarkModeSoundPlayed) {
+    if (preferences.isDarkMode && !isDarkModeSoundPlayed) {
       const lightningSound = new Audio(lightningMP3);
       lightningSound
         .play()
@@ -24,12 +24,14 @@ export function useDarkMode() {
         })
         .catch(() => {});
     }
-  }, [isDarkMode, isDarkModeSoundPlayed, dispatch]);
+  }, [preferences.isDarkMode, isDarkModeSoundPlayed, dispatch]);
 
   function toggleDarkMode() {
-    weatherService.darkModeSaveToStorage(!isDarkMode);
-    dispatch(darkModeToggle());
+    const preferencesCopy = { ...preferences };
+    preferencesCopy.isDarkMode = !preferencesCopy.isDarkMode;
+    weatherService.preferencesSaveToStorage(preferencesCopy);
+    dispatch(setPreferences(preferencesCopy));
   }
 
-  return { isDarkMode, toggleDarkMode };
+  return { isDarkMode: preferences.isDarkMode, toggleDarkMode };
 }

@@ -1,34 +1,18 @@
 import axios from "axios";
 
 const httpService = {
-  get(endpoint, data, parameters) {
-    return ajax(endpoint, "GET", data, parameters);
-  },
-  post(endpoint, data) {
-    return ajax(endpoint, "POST", data);
-  },
-  put(endpoint, data, parameters) {
-    return ajax(endpoint, "PUT", data, parameters);
-  },
-  delete(endpoint, data) {
-    return ajax(endpoint, "DELETE", data);
+  get(endpoint, parameters) {
+    return ajax(endpoint, axios.get, parameters);
   },
 };
 
 export default httpService;
 
-async function ajax(endpoint, method = "get", data = {}, parameters = "") {
+async function ajax(endpoint, axiosFn, parameters = "") {
   const API_KEY = "ztoG057zrGQbIReUPJMcURHmT1ukYv22";
 
   try {
-    const res = await axios({
-      url: `https://cors-anywhere.herokuapp.com/${endpoint}?apikey=${API_KEY}${parameters}`,
-      method,
-      data: data,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-    });
+    const res = await axiosFn(`${endpoint}?apikey=${API_KEY}${parameters}`);
     return res.data;
   } catch (err) {
     throw err;

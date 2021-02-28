@@ -28,9 +28,9 @@ export function favoritesToggle(location) {
   };
 }
 
-export function darkModeToggle(isDarkModeSoundPlayed) {
+export function setPreferences(preferences) {
   return (dispatch) => {
-    dispatch({ type: "TOGGLE_DARK_MODE", isDarkModeSoundPlayed });
+    dispatch({ type: "SET_PREFERENCES", preferences });
   };
 }
 

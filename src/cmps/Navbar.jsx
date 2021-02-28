@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useDarkMode } from "../hooks/useDarkMode";
 
 export const Navbar = () => {
-  const { isDarkMode, toggleDarkMode } = useDarkMode();
+  const { isDarkMode } = useDarkMode();
 
   return (
     <header className={`main-nav-container ${isDarkMode ? "dark" : ""}`}>
@@ -25,16 +25,6 @@ export const Navbar = () => {
               <NavLink to="/favorites">Favorites</NavLink>
             </li>
           </ul>
-          <div className="mode-toggle">
-            <label className="switch">
-              <input
-                type="checkbox"
-                checked={isDarkMode}
-                onChange={toggleDarkMode}
-              />
-              <span className="slider"></span>
-            </label>
-          </div>
         </div>
       </div>
     </header>

@@ -1,4 +1,4 @@
-import { DARKMODE_STORAGE_KEY, FAVORITES_STORAGE_KEY } from "../data/constants";
+import { PREFERENCES_KEY, FAVORITES_STORAGE_KEY } from "../data/constants";
 import httpService from "./httpService";
 
 const BASE_URL = "http://dataservice.accuweather.com";
@@ -9,7 +9,7 @@ const weatherService = {
   getFiveDailyForecasts,
   favoritesSaveToStorage,
   getLocationByCoordinates,
-  darkModeSaveToStorage,
+  preferencesSaveToStorage,
 };
 
 export default weatherService;
@@ -29,7 +29,6 @@ async function getFiveDailyForecasts(locationKey) {
 async function getBySearchTerm(searchTerm) {
   return await httpService.get(
     `${BASE_URL}/locations/v1/cities/autocomplete`,
-    null,
     `&q=${searchTerm}`
   );
 }
@@ -37,7 +36,6 @@ async function getBySearchTerm(searchTerm) {
 async function getLocationByCoordinates(coordinates) {
   return await httpService.get(
     `${BASE_URL}/locations/v1/cities/geoposition/search`,
-    null,
     `&q=${coordinates.lat},${coordinates.lng}`
   );
 }
@@ -46,6 +44,6 @@ function favoritesSaveToStorage(favorites) {
   localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(favorites));
 }
 
-function darkModeSaveToStorage(isDarkMode) {
-  localStorage.setItem(DARKMODE_STORAGE_KEY, isDarkMode);
+function preferencesSaveToStorage(preferences) {
+  localStorage.setItem(PREFERENCES_KEY, JSON.stringify(preferences));
 }

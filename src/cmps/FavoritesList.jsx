@@ -2,6 +2,8 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useDarkMode } from "../hooks/useDarkMode";
+import { useTemperature } from "../hooks/useTemperature";
+import { convertCelsiusToFahrenheit } from "../services/utilService";
 import {
   setLocationKey,
   setLocationName,
@@ -12,6 +14,7 @@ export const FavoritesList = ({ favorites }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { isDarkMode } = useDarkMode();
+  const { isCelsius } = useTemperature();
 
   function onClickLocation(location) {
     dispatch(setSearchTerm(location.name));
@@ -31,7 +34,12 @@ export const FavoritesList = ({ favorites }) => {
             key={f.key}
           >
             <h3 className="name">{f.name}</h3>
-            <p className="temperature">{f.temperature}°C</p>
+            <p className="temperature">
+              {isCelsius
+                ? f.temperature
+                : convertCelsiusToFahrenheit(f.temperature)}
+              <sup>{isCelsius ? "°C" : "°F"}</sup>
+            </p>
             <p>{f.weatherText}</p>
           </div>
         );

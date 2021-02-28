@@ -1,16 +1,16 @@
-import {
-  DARKMODE_STORAGE_KEY,
-  FAVORITES_STORAGE_KEY,
-} from "../../data/constants";
+import { PREFERENCES_KEY, FAVORITES_STORAGE_KEY } from "../../data/constants";
 import weatherService from "../../services/weatherService";
 
 let favorites = [];
 if (localStorage[FAVORITES_STORAGE_KEY])
   favorites = JSON.parse(localStorage[FAVORITES_STORAGE_KEY]);
 
-let isDarkMode = false;
-if (localStorage[DARKMODE_STORAGE_KEY])
-  isDarkMode = JSON.parse(localStorage[DARKMODE_STORAGE_KEY]);
+let preferences = {
+  isDarkMode: false,
+  isCelsius: true,
+};
+if (localStorage[PREFERENCES_KEY])
+  preferences = JSON.parse(localStorage[PREFERENCES_KEY]);
 
 const initialState = {
   favorites,
@@ -18,8 +18,8 @@ const initialState = {
   msg: "",
   locationKey: "",
   locationName: "",
-  isDarkMode,
   isDarkModeSoundPlayed: false,
+  preferences,
 };
 
 export default function f(state = initialState, action = {}) {
@@ -65,10 +65,10 @@ export default function f(state = initialState, action = {}) {
         ...state,
         favorites: favoritesCopy,
       };
-    case "TOGGLE_DARK_MODE":
+    case "SET_PREFERENCES":
       return {
         ...state,
-        isDarkMode: !state.isDarkMode,
+        preferences: action.preferences,
       };
     case "SET_DARK_MODE_SOUND_PLAYED":
       return {
