@@ -12,7 +12,11 @@ async function ajax(endpoint, axiosFn, parameters = "") {
   const API_KEY = "ztoG057zrGQbIReUPJMcURHmT1ukYv22";
 
   try {
-    const res = await axiosFn(`${endpoint}?apikey=${API_KEY}${parameters}`);
+    const res = await axiosFn(`${endpoint}?apikey=${API_KEY}${parameters}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     return res.data;
   } catch (err) {
     throw err;
